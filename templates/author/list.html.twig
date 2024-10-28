@@ -1,0 +1,30 @@
+<h1>List of Authors</h1>
+<form action="{{path('search_authors')}}">
+    <label for="">max books</label>
+    <input type="number" name="max">
+    <br>
+    <label for="">min books</label>
+    <input type="number" name="min">
+    <br>
+    <input type="submit" value="save">
+</form>
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Number of books</th>
+        <th>Action</th>
+    </tr>
+    {% for author in list %}
+    <tr>
+        <td><b>{{author.username}}</b></td>
+        <td>{{author.email}}</td>
+        <td>{{author.nbBooks}}</td>
+        <td>
+            <a href="">Edit</a>
+            <a href="">Delete</a> 
+        
+        </td>
+    </tr>
+    {% endfor %}
+</table>

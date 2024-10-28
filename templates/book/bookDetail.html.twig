@@ -1,0 +1,30 @@
+<h3>Referance : {{ref}} </h3>
+{% if books is empty%}
+<p>No books found.</p>
+{% else %}
+<table border="1">
+<tr>
+        <th>Username</th>
+        <th>Publication date</th>
+        <th>published</th>
+        <th>Category</th>
+        <th>author</th>
+        <th>Action</th>
+    </tr>
+{% for book in books %}
+    <tr>
+        <td><b>{{book.title}}</b></td>
+        <td>{{ book.publicationDate|date('Y-m-d') }}</td> 
+        <td>{{book.published}}</td>
+        <td>{{book.category}}</td>
+        <td>{{book.author.username}}</td>
+        <td>
+            <a href="">Edit</a>
+            <a href="">Delete</a> 
+        
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+    <a href="{{path('list_book')}}">Go to list</a>

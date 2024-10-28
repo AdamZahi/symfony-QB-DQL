@@ -1,0 +1,34 @@
+{# templates/books/by_authors.html.twig #}
+
+<h1>Books List by Authors</h1>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Publication Date</th>
+            <th>Is Published</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set current_author = null %}
+        {% for book in books %}
+            {# Group by author #}
+            {% if current_author != book.author.username %}
+                <tr>
+                    <td colspan="5"><strong>{{ book.author.username }}</strong></td>
+                </tr>
+                {% set current_author = book.author.username %}
+            {% endif %}
+            <tr>
+                <td></td> {# Empty cell for author, as it's displayed in the group header #}
+                <td>{{ book.title }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.publicationDate|date('Y-m-d') }}</td>
+                <td>{{ book.isPublished }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

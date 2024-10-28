@@ -1,0 +1,13 @@
+{# templates/authors/search.html.twig #}
+
+<h1>Search Authors by Book Count</h1>
+{% if list is not empty %}
+    <h2>Found Authors:</h2>
+    <ul>
+        {% for author in list %}
+            <li>{{ author.username }} - {{ author.nbBooks }} books</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No authors found matching the criteria.</p>
+{% endif %}
